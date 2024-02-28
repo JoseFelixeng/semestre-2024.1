@@ -1,3 +1,6 @@
-# semestre-2024.1
+# Esse Repositorio é destinado para a organização de conteúdo do semestre 2024.1 
+### author: José felix 
 
-Esse repositorio será usado para guardar as anotações de estudo individual do semestre de conclusão ao qual estou matricula.
+O contéudo que esta guardado aqui serve como meio para melhoria na organização para a aprendizagem nas disciplinas
+
+<img src="Horarios.png" alt="Imagem com Horarios">
