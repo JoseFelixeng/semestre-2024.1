@@ -4,11 +4,11 @@ https://docs.google.com/presentation/d/1hH--mdcZ2erPh54eOdy62u-1ShyEYxey6H0T8z7f
 
 
 #### Trilha da disciplina
-Introdução
-Modelo Conceitual (Modelo ER)
-Modelo Relacional
-Normalização
-Modelo Físico (indexação)
-SQL: DDL e DML
-SQL vs No-SQL (MongoDB)
+* 1 - Introdução
+* 2 - Modelo Conceitual (Modelo ER)
+* 3 - Modelo Relacional
+* 4 - Normalização
+* 5 - Modelo Físico (indexação)
+* 6 - SQL: DDL e DML
+* 7 - SQL vs No-SQL (MongoDB)
 
