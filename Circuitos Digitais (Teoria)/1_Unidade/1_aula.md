@@ -22,4 +22,24 @@ Um sinal binário simples é conhecido como `dígito binário` ou `bit` da expre
 * Uma aplicação bem conhecida dos circuitos digitais são os `microcontroladores`.
 
 * Os circutos digitais são encontrados nas diferentes aplicações dos computadores de própositos gerais são chamados frequentemente de `Sistemas Embarcados`.
+Uma vantagem dos sistemas digitais é a resistência a deteriorização ao longo do tempo. A utilização de sinais digitais no lugae de sinais analogicos para guardar audio por exemplo reduz a perda por deteriozação do arquivo pois é mais facil entender para que valor irá pois um sinal digital em um dado espaço de tempo pode ser apenas dois valores ``` 0/1 ```. Além disso outra vantagem para esse tipo de audio é a compreessão dos dados.
+
+#### forma de compressão 
+
+    * 1 - Caso o numero possa a seguinte caracteristica "0000000000"/ "11111111111"
+    * 2 - Quando o proximo bit for 0, dessa forma 000000000 ficaria da seguinte forma "00"
+    * 3 - Quando o proximo bit for 1, dessa forma 111111111 ficaria da seguinte forma "01"
+    * 4 - Se o primeiro de uma amostra for 1, então os proximos 10 bits mostra como o  a mesma realmente é
+
+* Exemplo: 
+
+```number
+0000000000 0000000000 0000001111 1111111111
+```
+
+* Seria comprimido e ficaria: 
+
+```number
+00 00 10000001111 11
+```
 

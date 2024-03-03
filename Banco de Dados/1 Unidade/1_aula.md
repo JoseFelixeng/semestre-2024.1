@@ -132,11 +132,11 @@ id_disciplina	Id_professor	ano	      semestre
 Tabela "disciplinas":		
 		
 id_disciplina	Nome_disciplina	             semestre
-101         	Engenharia Constitucional	1
-102	        Anatomia Humana	           	2
-103	        Direito Constitucional	    	3
-104	        Psicologia Clínica	        4
-105	        Design de Interiores	   	5
+101         Engenharia Constitucional	        1
+102	        Anatomia Humana	           	        2
+103	        Direito Constitucional	    	    3
+104	        Psicologia Clínica	                4
+105	        Design de Interiores	   	        5
 ```
 
 Podemos vê como ficou a organização das planilhas de forma a melhor adaptar/modelar para o problema proposto.
