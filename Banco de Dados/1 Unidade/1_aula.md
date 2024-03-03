@@ -75,7 +75,7 @@ id_aluno	id_curso	Nome_Aluno
 ```sql
 Tabela "Desempenho":								
 								
-id_desempenho	id_curso	id_aluno	id_professor	Nota1	Nota2	Nota3	Média	Feedback
+id_desempenho	id_curso	id_aluno		id_professor	Nota1	     Nota2	Nota3	Média	Feedback
 1	                101	        1	        201	        8.5	     8.5	 8.5	 8.5	    Bom
 2	                102	        2	        202	        9.0	     9.0	 9.0	 9.0	    Otimo
 3	                103	        3	        203	        7.8	     7.8	 7.8	 7.8	    Bom 
@@ -87,7 +87,7 @@ Tabela "Professor":
 	
 Id_professor	Nome_Professor
 201	            Silva
-202         	Santos
+202         	    Santos
 203	            Oliveira
 204	            Pereira
 205	            Costa
@@ -124,19 +124,19 @@ id_disciplina	Id_professor	ano	      semestre
 102	            202		        2024        1
 103	            203		        2024        1
 104	            204		        2024        1
-101	            205	            2024        1
+101	            205	                2024        1
 ```
 
 ```sql
 
 Tabela "disciplinas":		
 		
-id_disciplina	Nome_disciplina	            semestre
+id_disciplina	Nome_disciplina	             semestre
 101         	Engenharia Constitucional	1
-102	            Anatomia Humana	            2
-103	            Direito Constitucional	    3
-104	            Psicologia Clínica	        4
-105	            Design de Interiores	    5
+102	        Anatomia Humana	           	2
+103	        Direito Constitucional	    	3
+104	        Psicologia Clínica	        4
+105	        Design de Interiores	   	5
 ```
 
 Podemos vê como ficou a organização das planilhas de forma a melhor adaptar/modelar para o problema proposto.
