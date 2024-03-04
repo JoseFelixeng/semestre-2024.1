@@ -141,3 +141,22 @@ id_disciplina	Nome_disciplina	             semestre
 
 Podemos vê como ficou a organização das planilhas de forma a melhor adaptar/modelar para o problema proposto.
 
+
+### Anotações aula presencial 
+Relação = Tabela 
+Banco de dados relacional = Tabela 
+Conceitual => Lógico => Físico
+
+
+Lógica: está atrelado a olha o diagrama e vê as melhores formas de relacionar
+
+Meio Físico está relacionado a parte de mais baixo nível que diz respeito a otimização 
+
+Exemplo:
+Funcionario 
+Nome              Salário               dept
+Eduardo            X                       DCA
+João               Y                       DCA
+Maria              Z                       IMP
+Ana                A                       DIMAP
+
