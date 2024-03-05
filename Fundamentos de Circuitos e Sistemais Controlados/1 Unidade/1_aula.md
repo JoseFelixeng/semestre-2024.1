@@ -42,7 +42,7 @@ A potência está atrelada a utilização de resistores.
 ### Resistor
 #### Polarização 
 
-<img src="/Fundamentos de Circuitos e Sistemais Controlados/1 Unidade/img/1.png" alt=" Imagem da polarização de um resistor" />
+![imagem representação FSCS](/Fundamentos%20de%20Circuitos%20e%20Sistemais%20Controlados/1%20Unidade/img/1.png)
 
 #### Potência
  * P = V * I
