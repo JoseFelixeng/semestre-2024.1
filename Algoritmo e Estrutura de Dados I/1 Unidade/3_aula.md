@@ -35,4 +35,30 @@ Discutir o desempenho sem recorrer o tempo absoluto. Contamos a quantidade de op
 * retornar, aritmética, atribuição, definição de variável;
 * O(1), O(n), Ω(1), Ω(n),  θ(n),  θ(n^2)
     
+Para ArrayList: 
+```Go
+/**
+1. Adicionar sempre da esquerda para a direita, após o ultimo elemento inserido anteriormente.
+2. Melhor Caso: ômega(1)
+Just: não precisa duplicar o vetor, nem varrer o vetor do início para o endereço a ser Add
+3. Pior caso: O(n)
+Just: Duplicar o vetor requer copiar os elementos para o novo vetor, causando um custo computacional
+proporcional ao tamanho do vetor (n).
 
+**/
+```
+
+```Go 
+/**
+1. Adiciona elemento na posição especificada, deslocando os elementos à direita dessa posição
+2. Melhor caso: ômega(1)
+just: Não precisa duplicar o vetor, nem varrer o vetor do ínicio para encontrar o endereço a ser ADD.
+3. Pior caso: O(n):
+Just:
+	1) Duplicar o vetor requer copiar os elementos para o novo vetor, causando um custo computacional proporcional
+	ao tamanho do vetor(n);
+	2) Adicionar no início requer deslocar os n elementos para a direita
+
+**/
+
+```
