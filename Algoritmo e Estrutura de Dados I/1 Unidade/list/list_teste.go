@@ -134,3 +134,119 @@ func TestAddOnIndexMId(t *testing.T){
 	}
 
 }
+
+func TestRemoveOnIndexBeginning(t *testing.T){
+	defer setupTest()()
+	for _, list := range lists{
+		// preenche a lista com o valor inserido, seguindo até a posição
+		for i := 0; i < size; i++{
+			list.Add(i)
+		}
+
+		for i := 0; i < size; i++{
+			// Selecionando o item na primeira posição
+			val, err := list.Get(0)
+			// teste se o valor Existe na posição
+			if val != 1 {
+				// Se o erro for diferente de NULL essa será a saída
+					t.Errorf("%T valor no index %d é %d, Mas o esperado seria 0", list ,val ,i)
+			} 
+			if err != nil{
+				// saída quando o resultado for diferente de NULL 
+				t.Errorf(err.Error())
+			}
+			// Após todos os passos Remove o item da lista
+			list.TestRemoveOnIndex(0)
+			// testa o tamanho da vista para não remover fora da lista
+			if list.Size() != size-i-1{
+				t.Errorf("%T size is %d, but we expected it to be %d", list, list.Size(), size-i-1)
+			}
+		}
+	}
+
+}
+
+
+func TestRemoveOnIndexEnd(t *testing.T){
+	defer setupTest()()
+	for _, list := range lists{
+		// preenche a lista com o valor inserido, seguindo até a posição
+		for i := 0; i < size; i++{
+			list.Add(i)
+		}
+		// Vai percorrer a lista enquanto houver valores
+		for i := size -1 ; i >= 0 ; i--{
+			// Selecionando o item na primeira posição
+			val, err := list.Get(i)
+			if val != i {
+					t.Errorf("%T valor no index %d é %d, Mas o esperado seria 0", list ,val ,i)
+			} 
+			if err != nil{
+				t.Errorf(err.Error())
+			}
+			list.TestRemoveOnIndex(0)
+			if list.Size() != i{
+				t.Errorf("%T size is %d, but we expected it to be %d", list, list.Size(), i)
+			}
+		}
+	}
+
+}
+
+
+func TestRemoveOnIndexMid(t *testing.T){
+	defer setupTest()()
+	for _, list := range lists{
+		// preenche a lista com o valor inserido, seguindo até a posição
+		for i := 0; i < size; i++{
+			list.Add(i)
+		}
+		// Remove on mid
+		list.TestRemoveOnIndex(2)
+		for i := 2; i < list.Size(); i++{
+			// Selecionando o item na primeira posição
+			val, err := list.Get(i)
+			if val != i+1 {
+					t.Errorf("%T valor no index %d é %d, Mas o esperado seria 0", list, i ,val ,i+1)
+			} 
+			if err != nil{
+				t.Errorf(err.Error())
+			}
+		}
+	}
+
+}
+
+func TestSet(t *testing.T) {
+	defer setupTest()()
+	for _, list := range lists {
+		//fulfill list with 1's
+		for i := 0; i < size; i++ {
+			list.Add(1)
+		}
+
+		//set -1 on even indexes
+		for i := 0; i < size; i++ {
+			if i%2 == 0 {
+				list.Set(-1, i)
+			}
+		}
+
+		//check values before index 2 are the same
+		for i := 0; i < size; i++ {
+			val, err := list.Get(i)
+			if i%2 == 0 {
+				if val != -1 {
+					t.Errorf("%T value on index %d is %d, but we expected it to be -1", list, i, val)
+				}
+			} else {
+				if val == -1 {
+					t.Errorf("%T value on index %d is %d, but we expected it to be different from -1", list, i, val)
+				}
+			}
+			if err != nil {
+				t.Errorf(err.Error())
+			}
+		}
+	}
+}
