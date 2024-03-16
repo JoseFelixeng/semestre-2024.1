@@ -118,3 +118,32 @@ func (list *ArrayList) RemoveOnIndex(index int) error {
 		}
 	}
 }
+
+func (list *ArrayList) Get(index int) (int, error) {
+	// testa se o index esta dentro do tamanho correto
+	if index >= 0 && index <= list.inserted {
+		// Retorna a posição e o objeto necessario e um valor nulo comprovando que não ouve erro
+		return list.values[index], nil
+	} else {
+		if index < 0 {
+			return index, errors.New("Não foi possivel adicionar a lista Index negativo")
+		} else {
+			return index, errors.New("Não pode adicionar em um valor maior que o index da lista")
+		}
+	}
+}
+
+func (list *ArrayList) Set(value, index int) error {
+	// testa se o index esta dentro do tamanho correto
+	if index >= 0 && index <= list.inserted {
+		// Retorna a posição e o objeto necessario e um valor nulo comprovando que não ouve erro
+		list.values[index] = value
+		return nil
+	} else {
+		if index < 0 {
+			return errors.New("Não foi possivel adicionar a lista Index negativo")
+		} else {
+			return errors.New("Não pode adicionar em um valor maior que o index da lista >= arraylist.size")
+		}
+	}
+}
