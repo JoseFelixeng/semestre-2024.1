@@ -70,3 +70,51 @@ Just:
 	2) Adicionar no início requer deslocar os n elementos para a direita
 
 **/
+
+// Função para adcionar elemento em uma posição predeterminada
+func (list *ArrayList) AddOnIndex(value int, index int) error {
+	// testa se o index esta dentro do tamanho correto
+	if index >= 0 && index <= len(list.values) {
+		if list.inserted == len(list.values) {
+			// caso seja fora do array é chamada uma função que duplica o tamanho do array
+			list.doubleArray()
+		}
+		// se o valor estiver dentro do tamanho do vetor o mesmo irá abrir um espaço e adicionar na posição mais a esquerda
+		for i := list.inserted; i > index; i-- {
+			list.values[i] = list.values[i-1]
+		}
+		// adciona o valor ao vetor
+		list.values[index] = value
+		list.inserted++
+		// retorna nulo para comprovar que a operaçao foi um sucesso
+		return nil
+		// se  o index for menor que 0
+	} else {
+		if index < 0 {
+			return errors.New("Não foi possivel adicionar a lista Index negativo")
+		} else {
+			return errors.New("Não pode adicionar em um valor maior que o index da lista")
+		}
+	}
+}
+
+func (list *ArrayList) RemoveOnIndex(index int) error {
+	// testa se o index esta dentro do tamanho correto
+	if index >= 0 && index < list.inserted {
+		// se o valor estiver dentro do tamanho do vetor o mesmo irá abrir um espaço e adicionar na posição mais a esquerda
+		for i := index; i < list.inserted; i++ {
+			list.values[i] = list.values[i+1]
+		}
+		// Removendo da lista
+		list.inserted--
+		// retorna nulo para comprovar que a operaçao foi um sucesso
+		return nil
+		// se  o index for menor que 0
+	} else {
+		if index < 0 {
+			return errors.New("Não foi possivel adicionar a lista Index negativo")
+		} else {
+			return errors.New("Não pode adicionar em um valor maior que o index da lista")
+		}
+	}
+}
