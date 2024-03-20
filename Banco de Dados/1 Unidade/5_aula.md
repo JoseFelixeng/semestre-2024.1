@@ -19,19 +19,19 @@ cpf         nome   tipo_emprego	     nivel		    grau	    tipo_eng
 ```sql
 Tabela "Secretario":								
 								
-id    nivel  
+f_id    nivel  
 ```
 
 ```sql
 Tabela "Tecnico":								
 								
-id    grau	      
+f_id    grau	      
 ```
 
 ```sql
 Tabela "Engenheiro":								
 								
-id     tipo_eng     
+f_id     tipo_eng     
 ```
 
 A tabela Funcionario se relaciona com as tabelas acima por meio de chave estrangeira para modelar de maneira mais adequada o BD.
