@@ -66,3 +66,36 @@ void imprimirLista(struct linkedlist* lista) {
 }
 
 ```
+
+#### Inserir elemento no fim da lista
+Observações Importantes:
+1. **A lista está Vazia**, nesse caos, basta apontar a cabeça da lista para o nó recém-criado.
+2. **A lista não está vazia**, nesse caso, precisamos precorrer até o último elemento da lista e atualizar o valor de **prox**  desse último nó para o nó recem-criado.
+**OBS:** É interessante criar uma variavel que possa armazenda sempre o final da lista.
+```C
+// Assinatura da função
+void inserirElementoNoFim(struct linkedlist* lista, int valor)
+```
+
+<img src="./img/linkedlist-inserir-fim.gif">
+
+#### Inserir elemento no ínici da lista
+Observações importantes:
+1. **A lista está Vazia**, Nesse caso, basta apontar a cabeça da lista para o nó recém-criado.
+2. **A lista não está vazia**, nesse caso,  basta apontar o ponteiro prox do nó recém-criado para o endereço que a cabeça da lista aponta, pois o novo nó precisa apontar para a antiga cabeça da lista. Por fim, apontamos a cabeça da lista para o nó recém-criado.
+
+```C
+// Inserir no começo assinatura
+void inserirElementoNoInicio(struct linkedlist* lista, int valor)
+
+// Inserir na posição Espefica
+void inserirElementoEmPosicao(struct linkedlist* lista, int valor, int posicao)
+
+// Obter elemento da lista
+int obterElementoEmPosicao(struct linkedlist* lista, int posicao)
+
+// Remover da lista
+void removerElementoEmPosicao(struct linkedlist* lista, int posicao)
+```
+
+<img src="./img/image.png">
