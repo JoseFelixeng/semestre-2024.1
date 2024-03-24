@@ -21,10 +21,48 @@ Um ponto positivo para as listas ligadas é o fato de que elas não possuem espa
     1.2 Ponteiros
 -- A primeira necessaria a ser criada é a estrutura para um nó.
 
-```Go
+```C
 struct no{
     int val;
     struct no *prox;
 };
+```
+Os metodos devem ser implementados como extensões para que possa ser feito os testes unitarios nos mesmo.
+
+**OBS:** Uma LinkedList pode iniciar o primeiro como sendo nulo, pois serem será usada uma função para alocar o novo ponteiro na memoria.
+
+```C
+struct linkedlist{
+    struct no* cabeca;
+    int tamanho  -- usado para medir o tamanho da lista
+};
+```
+#### Função imprimir
+
+Ao criar uma LinkedList precisamos criar uma variável para guardar o endereço do primeiro nó da lista. Estte elemento é chamado de cabeça, para imprir a lista, basta partir da cabeça e imprimir o valor de todos os nós, até que não haja mais nós, ou em outra palavras,até que o ponteiro para o próximo nó seja NULL.
+
+<img src="./img/linkedlist-impressao.gif">
+
+```C
+// Código usado para imprimir uma linked list
+void imprimirLista(struct linkedlist* lista) {
+    //usamos o aux para percorrer a lista
+    if (lista->cabeca != NULL) {
+        struct no* aux = lista->cabeca;
+        //navega partindo da cabeça até chegar NULL
+        printf("[");
+        do {
+            printf("%d", aux->val);
+            aux = aux->prox;
+            if (aux != NULL) {
+                printf(", ");
+            }
+        } while (aux != NULL);
+        printf("]");
+    }
+    else {
+        printf("A lista está vazia!");
+    }
+}
 
 ```
