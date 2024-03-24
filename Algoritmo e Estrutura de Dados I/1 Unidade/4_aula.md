@@ -13,3 +13,18 @@ Uma LinkedLists(ou listas ligadas, em pt-br) são listas implementaadas com nós
 Uma outra forma de representar o armazenado de dados na forma de um vetor.
 
 <img src="./img/linkedlist-apresentacao-2.png">
+
+Um ponto positivo para as listas ligadas é o fato de que elas não possuem espaços ociosos. Porém para cada espaço novo alocado é necessario mais 4 bytes para alocar o ponteiro que aponta para o proximo nó. Com isso podemos concluir que dependendo da situação a LinkedList pode ser mais eficiente em temos de alocamento de memoria do que um ArrayList por consumir bem menos espaço.
+
+1. Estrututa:
+    1.1 Nós
+    1.2 Ponteiros
+-- A primeira necessaria a ser criada é a estrutura para um nó.
+
+```Go
+struct no{
+    int val;
+    struct no *prox;
+};
+
+```
