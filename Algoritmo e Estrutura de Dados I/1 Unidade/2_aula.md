@@ -227,8 +227,10 @@ func (list *ArrayList) doubleArray() {
 	doubledValues := make([]int, 2*curSize) // Duplicar o tamanho do array list com a entrada do curSize
 
 	for i := 0; i < curSize; i++ {
+        // Atualizando o array list com os valores antingo
 		doubledValues[i] = list.values[i]
 	}
+    // atualiza a lista apos ser duplicada
 	list.values = doubledValues
 }
 
@@ -246,9 +248,11 @@ func (list *ArrayList) doubleArray() {
  */
 func (list *ArrayList) Add(val int) {
 	//verificar se array está lotado
+    // Testa se a lista esta lotada, caso seja verdadeiro chama a função para dobrar a lista
 	if list.inserted >= len(list.values) {
 		list.doubleArray()
 	}
+    // instancia as listas e inserir os valores 
 	list.values[list.inserted] = val
 	list.inserted++
 }
