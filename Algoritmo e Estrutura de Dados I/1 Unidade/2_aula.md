@@ -88,7 +88,7 @@ void duplicarCapacidade(struct arraylist* lista) {
 
 Os arrays naturalmente nos provêem a opção de obter um elemento em uma posição específica usando o índice. O único cuidado que devemos ter é verificar se aquele índice é válido.Note também que apesar da lista ter capacidade específica, ela pode ter uma quantidade de elementos menor do que esta capacidade. Na ilustração a seguir, a capacidade usada como exemplo é 10. Então, precisamos ter uma variável para controlar quantos elementos já foram inseridos na lista, de forma a usar este valor para saber se existe algum elemento em uma posição específica. A seguir são apresentadas uma animação que ilustra um ArrayList sendo inicializado, além da obtenção do elemento no índice 2 do ArrayList, e a implementação da função obterElemento.
 
-![Reccriando a forma de alocar](/Algoritmo%20e%20Estrutura%20de%20Dados%20I/img/arraylist-obtencao.gif)
+![Recriando a forma de alocar](/Algoritmo%20e%20Estrutura%20de%20Dados%20I/img/arraylist-obtencao.gif)
 
 ```C
 int obterElementoEmPosicao(struct arraylist* lista, int posicao) {
@@ -190,3 +190,147 @@ Aqui vamos classisficar o desempenho em instantâneo sempre que não precisarmos
 * getTamanho: instantâneo
 * removerElemento: instantâneo
 * removerElementoEmPosicao: proporcional ao tamanho do array pelas mesmas razões de inserirElementoEmPosicao (uma remoção do elemento na posição 0 causa um deslocamento de todos os elementos do array)
+
+
+### Implementando 
+
+```GO
+
+package list
+
+import "errors"  // Importando por herança função ERRORS
+
+// Criando uma estrutura do tipo ArrayList
+type ArrayList struct {
+	values   []int //Valores para ser usada para instancias os valores das posições 
+	inserted int   // variavel usada para inserir novos valores ao arraylist
+}
+
+// Função para criar a arraylist
+func (list *ArrayList) Init(size int) error {
+    // Testa se o tamanho da arraylist é zero
+	if size > 0 {
+        // adiciona valor no arraylist 
+		list.values = make([]int, size)
+		return nil // se tudo der certo o retorno será NULL
+	} else {
+        // Caso não seja possivel criar um arraylist retorna um Erro.
+		return errors.New("Can't init ArrayList with size <= 0")
+	}
+}
+
+/**
+ * Duplica o vetor.
+ */
+func (list *ArrayList) doubleArray() {
+	curSize := len(list.values) // criar uma instancia com o tamanho antigo do arraylist
+	doubledValues := make([]int, 2*curSize) // Duplicar o tamanho do array list com a entrada do curSize
+
+	for i := 0; i < curSize; i++ {
+		doubledValues[i] = list.values[i]
+	}
+	list.values = doubledValues
+}
+
+/**
+ * Adiciona sempre da esquerda para a direita,
+ * após o último elemento inserido anteriormente.
+ *
+ * Melhor caso: Ômega(1)
+ *   Just: não precisa duplicar vetor, nem varrer o vetor
+ *         do início para encontrar o endereço a ser Add
+ * Pior caso: O(n)
+ *   Just: duplicar o vetor requer copiar os elementos
+ *         para o novo vetor, causando um custo computa-
+ *         cional proporcional ao tamanho do vetor (n)
+ */
+func (list *ArrayList) Add(val int) {
+	//verificar se array está lotado
+	if list.inserted >= len(list.values) {
+		list.doubleArray()
+	}
+	list.values[list.inserted] = val
+	list.inserted++
+}
+
+/**
+ * Adiciona elemento na posição especificada, deslocando
+ * os elementos à direita dessa posição.
+ *
+ * Melhor caso: Ômega(1)
+ *   Just: não precisa duplicar vetor, nem varrer o vetor
+ *         do início para encontrar o endereço a ser Add
+ * Pior caso: O(n)
+ *   Just: 1) duplicar o vetor requer copiar os elementos
+ *         para o novo vetor, causando um custo computa-
+ *         cional proporcional ao tamanho do vetor (n)
+ *         2) adicionar no início requer deslocar os n
+ *            elementos do vetor para a direita
+ */
+func (list *ArrayList) AddOnIndex(value int, index int) error {
+	if index >= 0 && index <= list.inserted {
+		if list.inserted == len(list.values) {
+			list.doubleArray()
+		}
+		for i := list.inserted; i > index; i-- {
+			list.values[i] = list.values[i-1]
+		}
+		list.values[index] = value
+		list.inserted++
+		return nil
+	} else {
+		if index < 0 {
+			return errors.New("Can't add in arraylist on negative index")
+		} else {
+			return errors.New("Can't add in arraylist on index out of upper bounds")
+		}
+	}
+}
+
+func (list *ArrayList) RemoveOnIndex(index int) error {
+	if index >= 0 && index < list.inserted {
+		for i := index; i < list.inserted-1; i++ {
+			list.values[i] = list.values[i+1]
+		}
+		list.inserted--
+		return nil
+	} else {
+		if index < 0 {
+			return errors.New("Can't remove from arraylist on negative index")
+		} else {
+			return errors.New("Can't remove from arraylist on index out of upper bounds")
+		}
+	}
+}
+
+func (list *ArrayList) Get(index int) (int, error) {
+	if index >= 0 && index < list.inserted {
+		return list.values[index], nil
+	} else {
+		if index < 0 {
+			return index, errors.New("Can't get value from arraylist on negative index")
+		} else {
+			return index, errors.New("Can't get value from arraylist on index out of upper bounds")
+		}
+	}
+}
+
+func (list *ArrayList) Set(value, index int) error {
+	if index >= 0 && index < list.inserted {
+		list.values[index] = value
+		return nil
+	} else {
+		if index < 0 {
+			return errors.New("Can't set value on arraylist on index < 0")
+		} else {
+			return errors.New("Can't set value on arraylist on index >= arraylist.size")
+		}
+	}
+}
+
+func (list *ArrayList) Size() int {
+	return list.inserted
+}
+
+
+```

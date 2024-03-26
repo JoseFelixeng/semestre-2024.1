@@ -99,3 +99,109 @@ void removerElementoEmPosicao(struct linkedlist* lista, int posicao)
 ```
 
 <img src="./img/image.png">
+
+
+### Implementação 
+
+```GO 
+
+package list
+
+import "errors"
+
+// Implementando a estrutura HEAD
+type LinkedList struct {
+	head     *Node // Criando a cabeça 
+	inserted int // variavel usada para inserir
+}
+
+// Implementando a estrutura para Criação dos Nó
+type Node struct {
+	val  int // variavel usada para pegar o valor que será usado no nó 
+	next *Node // Usado para para apontar para o nó seguinte
+}
+
+// Função usada para adicionar um novo elemento 
+func (list *LinkedList) Add(val int) {
+	newNode := &Node{val, nil} // criando um novo nó e instancia a variavel val e cetando o erro como nulo
+    // If usado para instanciar a cabeça
+	if list.inserted == 0 {
+		list.head = newNode // instancia a cabeça como um novo nó 
+	} else {
+        // cria uma variavel auxiliar que aponta para a cabeça 
+		aux := list.head
+		for aux.next != nil {
+            // caso auxiliar for diferente de NULL quer dizer que eu não estou na cabeça nesse caso eu atualizo o auxiliar para ele apontar para o proximo nó 
+			aux = aux.next
+		}
+        // aux. next é instancia como um novo nó 
+		aux.next = newNode
+	}
+    // a Listas é atualizada e incrementada
+	list.inserted++
+}
+
+func (list *LinkedList) AddOnIndex(val int, index int) error {
+	if index >= 0 && index <= list.inserted {
+		newNode := &Node{val, nil}
+		if list.inserted == 0 {
+			list.head = newNode
+		} else {
+			prev := list.head
+			for i := 0; i < index-1; i++ {
+				prev = prev.next
+			}
+			newNode.next = prev.next
+			prev.next = newNode
+		}
+		return nil
+	} else {
+		return errors.New("error msg")
+	}
+}
+
+func (list *LinkedList) RemoveOnIndex(index int) error {
+	if index >= 0 && index < list.inserted {
+		if index == 0 {
+			list.head = list.head.next
+		} else {
+			prev := list.head
+			for i := 0; i < index-1; i++ {
+				prev = prev.next
+			}
+			prev.next = prev.next.next
+		}
+		list.inserted--
+		return nil
+	} else {
+		//error
+		return errors.New("Invalid index")
+	}
+
+}
+
+func (list *LinkedList) Get(index int) (int, error) {
+	if index >= 0 && index < list.inserted {
+		cur := list.head
+		for i := 0; i < index; i++ {
+			cur = cur.next
+		}
+		return cur.val, nil
+	} else {
+		if index < 0 {
+			return index, errors.New("Can't get value from linkedlist on negative index")
+		} else {
+			return index, errors.New("Can't get value from linkedlist on index out of upper bounds")
+		}
+	}
+}
+
+func (list *LinkedList) Set(value, index int) error {
+	return errors.New("error msg")
+}
+
+func (list *LinkedList) Size() int {
+	return list.inserted
+}
+
+```
