@@ -1,6 +1,11 @@
 # Aula 2 - LISTAS 
 Usamos listas no cotidiano é de comum conhecimento das listas e suas formas utilizações. 
 
+A estrutura de dados do tipo lista pode ser representada em cinco tipos diferentes, e cada um pode ser implementado de forma estática ou dinâmica: lista simplesmente encadeada e não ordenada, lista simplesmente encadeada e ordenada, lista duplamente encadeada e não ordenada, lista duplamente encadeada e ordenada e listas circulares. 
+
+
+<img src="./img/type_list.png">
+
 ### Caracteristicas das listas 
 
 * Inserir um elemento no fim da lista.
