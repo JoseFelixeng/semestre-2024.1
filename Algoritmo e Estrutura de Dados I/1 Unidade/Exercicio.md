@@ -45,7 +45,7 @@ Nesse contexto, assinale a alternativa que representa, respectivamente, as estru
 
 
 ### Listas
-Na linguagem GoLang, use a interface IList definida abaixo e programe as seguintes estruturas de dados: ArrayList, LinkedList, DoublyLinkedList. (replit)
+1. Na linguagem GoLang, use a interface IList definida abaixo e programe as seguintes estruturas de dados: ArrayList, LinkedList, DoublyLinkedList. (replit)
 
 ```GO
 type IList interface {
@@ -58,25 +58,26 @@ type IList interface {
 }
 ```
 
-Considere as EDs apresentadas na tabela a seguir e responda o desempenho de tempo de pior caso e melhor caso para cada operação listada. 
+2. Considere as EDs apresentadas na tabela a seguir e responda o desempenho de tempo de pior caso e melhor caso para cada operação listada. 
 
 
 <img src="./img/EX2.png">
 
+3. Cite uma vantagem e uma desvantagem do array list em relação à lista ligada.
 
+4. Cite uma vantagem e uma desvantagem da lista duplamente ligada em relação à lista ligada.
 
-
-
-Cite uma vantagem e uma desvantagem do array list em relação à lista ligada.
-Cite uma vantagem e uma desvantagem da lista duplamente ligada em relação à lista ligada.
-Escreva uma função in-place para inverter a ordem de um ArrayList. 
+5. Escreva uma função in-place para inverter a ordem de um ArrayList. 
+```GO 
 func (list *ArrayList) Reverse()
 type ArrayList struct {
 	values   []int
 	inserted int
 }
+```
 
-Escreva uma função in-place para inverter a ordem de uma LinkedList. 
+6. Escreva uma função in-place para inverter a ordem de uma LinkedList. 
+```GO
 func (list *LinkedList) Reverse()
 type LinkedList struct {
 	head *Node
@@ -86,8 +87,10 @@ type Node struct {
 	value int
 	next  *Node
 }
+```
 
-Escreva uma função in-place para inverter a ordem de uma DoublyLinkedList. 
+7. Escreva uma função in-place para inverter a ordem de uma DoublyLinkedList. 
+```GO
 func (list *DoublyLinkedList) Reverse()
 type DoublyLinkedList struct {
 	head *Node2P
@@ -99,12 +102,14 @@ type Node2P struct {
 	value int
 	next  *Node
 }
+```
 
-Por que não faz sentido adicionarmos uma cauda (tail) em LinkedLists?
+8. Por que não faz sentido adicionarmos uma cauda (tail) em LinkedLists?
 
 
-Pilhas
-Na linguagem GoLang, use a interface IStack definida abaixo e programe as seguintes estruturas de dados: ArrayStack, LinkedListStack. (replit)
+### Pilhas
+1. Na linguagem GoLang, use a interface IStack definida abaixo e programe as seguintes estruturas de dados: ArrayStack, LinkedListStack. (replit)
+```GO
 type IStack interface {
 	Push(value int)
 	Pop() (int, error)
@@ -112,70 +117,23 @@ type IStack interface {
 	IsEmpty() bool
 	Size() int
 }
+```
 
-Considere as EDs apresentadas na tabela a seguir e responda o desempenho de tempo de pior caso e melhor caso para cada operação listada. 
+2. Considere as EDs apresentadas na tabela a seguir e responda o desempenho de tempo de pior caso e melhor caso para cada operação listada. 
 
-
-ArrayStack
-LinkedListStack
-Operação
-Pior Caso
-Melhor Caso
-Pior Caso
-Melhor Caso
-Push(value int)
-
-
-O(n)
-duplicar
-
-
-O(1)
-topo está na cabeça da lista
-
-
-Pop() (int, error)
-
-
-O(1)
-
-
-O(1)
-basta apontar a cabeça da lista p/ prox
-
-
-Peek() (int, error)
-O(1)
-
-
-O(1)
-topo está na cabeça da lista
-
-
-IsEmpty() 
+<img src="./img/EX3.png">
 
 
 
-O(1)
+3. Escreva uma função que detecta se uma certa combinação de parênteses está balanceada. 
+```
+Dica 1: usar uma pilha. Dica 
+2: pensar nos casos de sucesso e casos de falha antes da implementação func balparenteses(par string) bool
+```
 
+4. Uma pilha é uma estrutura de dados que armazena uma coleção de itens de dados relacionados e que garante o seguinte funcionamento: o último elemento a ser inserido é o primeiro a ser removido. É comum na literatura utilizar os nomes push e pop para as operações de inserção e remoção de um elemento em uma pilha respectivamente. O seguinte trecho de código em linguagem C define uma estrutura de dados pilha utilizando um vetor de inteiros, bem como algumas funções para sua manipulação.
 
-O(1)
-
-
-Size()
-
-
-O(1)
-
-
-O(1)
-
-
-
-Escreva uma função que detecta se uma certa combinação de parênteses está balanceada. Dica 1: usar uma pilha. Dica 2: pensar nos casos de sucesso e casos de falha antes da implementação
-func balparenteses(par string) bool
-
-Uma pilha é uma estrutura de dados que armazena uma coleção de itens de dados relacionados e que garante o seguinte funcionamento: o último elemento a ser inserido é o primeiro a ser removido. É comum na literatura utilizar os nomes push e pop para as operações de inserção e remoção de um elemento em uma pilha respectivamente. O seguinte trecho de código em linguagem C define uma estrutura de dados pilha utilizando um vetor de inteiros, bem como algumas funções para sua manipulação.
+```C
 #include <stdlib.h>
 #include <stdio.h>
 typedef struct {
@@ -212,21 +170,27 @@ int main() {
     printf("%d", a);
     return 0;
 }
+```
 
-A esse respeito, avalie as afirmações a seguir.
-A complexidade computacional de ambas funções push e pop é O(1).
-O valor exibido pelo programa seria o mesmo caso a instrução a += pop(p); fosse trocada por a += a;
-Em relação ao vazamento de memória (memory leak), é opcional chamar a função free(p), pois o vetor usado pela pilha é alocado estaticamente.
-É correto o que se afirma em
-I, apenas.
-III, apenas.
-I e II, apenas.
-II e III apenas.
-I, II e III.
+5. A esse respeito, avalie as afirmações a seguir.
 
-Filas 
-Mencione algumas aplicações de Filas.
-Na linguagem GoLang, use a interface IQueue definida abaixo e programe as seguintes estruturas de dados: ArrayQueue, LinkedListQueue. (replit)
+* I. A complexidade computacional de ambas funções push e pop é O(1).
+* II. O valor exibido pelo programa seria o mesmo caso a instrução a += pop(p); fosse trocada por a += a;
+* III. Em relação ao vazamento de memória (memory leak), é opcional chamar a função free(p), pois o vetor usado pela pilha é alocado estaticamente.
+
+É correto o que se afirma em:
+
+* A) I, apenas.
+* B) III, apenas.
+* C) I e II, apenas.
+* D) II e III apenas.
+* E) I, II e III.
+
+### Filas 
+1. Mencione algumas aplicações de Filas.
+
+2. Na linguagem GoLang, use a interface IQueue definida abaixo e programe as seguintes estruturas de dados: ArrayQueue, LinkedListQueue. (replit)
+```GO
 type IQueue interface {
 	Enqueue(value int)
 	Dequeue() (int, error)
@@ -234,62 +198,12 @@ type IQueue interface {
 	IsEmpty() bool
 	Size() int
 }
+```
 
-Considere as EDs apresentadas na tabela a seguir e responda o desempenho de tempo de pior caso e melhor caso para cada operação listada. 
-
-
-ArrayQueue
-LinkedListQueue
-Operação
-Pior Caso
-Melhor Caso
-Pior Caso
-Melhor Caso
-Enqueue(value int)
+3. Considere as EDs apresentadas na tabela a seguir e responda o desempenho de tempo de pior caso e melhor caso para cada operação listada. 
 
 
-O(n)
-aumentar o array
-
-
-O(1)
-uso o rear
-
-
-Dequeue() (int, error)
-O(1)
-
-
-O(1)
-uso o front
-
-
-Front() (int, error)
-O(1)
-
-
-O(1)
-uso o rear
-
-
-IsEmpty() 
-
-
-
-O(1)
-
-
-O(1)
-
-
-Size()
-
-
-O(1)
-
-
-O(1)
-
+<img src="./img/EX4.png">
 
 
 Escreva uma função que retorne a quantidade de elementos inseridos em uma Fila implementada com vetor. Escreva a função Size( ) considerando que o struct ArrayQueue não contém a variável size, como apresentado na tabela a seguir. Lembre-se que os índices de front e rear inicialmente assumem o valor -1, e que o ArrayQueue tem um caráter circular. 
