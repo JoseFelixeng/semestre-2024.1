@@ -11,4 +11,4 @@ Nome: José felix Rodrigues Anselmo
 ### GERAIS 
 1. 
 1.1 ED: 
-1.2 TAD: 
+1.2 TAD: Quando os dados são dispostos e manipulados de forma homogênea.
