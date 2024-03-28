@@ -206,19 +206,22 @@ type IQueue interface {
 <img src="./img/EX4.png">
 
 
-Escreva uma função que retorne a quantidade de elementos inseridos em uma Fila implementada com vetor. Escreva a função Size( ) considerando que o struct ArrayQueue não contém a variável size, como apresentado na tabela a seguir. Lembre-se que os índices de front e rear inicialmente assumem o valor -1, e que o ArrayQueue tem um caráter circular. 
+4. Escreva uma função que retorne a quantidade de elementos inseridos em uma Fila implementada com vetor. Escreva a função Size( ) considerando que o struct ArrayQueue não contém a variável size, como apresentado na tabela a seguir. Lembre-se que os índices de front e rear inicialmente assumem o valor -1, e que o ArrayQueue tem um caráter circular. 
+```GO
 func (queue *ArrayQueue) Size()
 type ArrayQueue struct {
 	values []int
 	front  int
 	rear   int
 }
+```
 
 
+### Filas de Duas Pontas (Deque)
+1. Mencione algumas aplicações de Deques.
 
-Filas de Duas Pontas (Deque)
-Mencione algumas aplicações de Deques.
-Na linguagem GoLang, use a interface IQueue definida abaixo e programe as seguintes estruturas de dados: ArrayQueue, LinkedListQueue. (replit)
+2. Na linguagem GoLang, use a interface IQueue definida abaixo e programe as seguintes estruturas de dados: ArrayQueue, LinkedListQueue. (replit)
+```GO
 type IDeque interface {
 	EnqueueFront(value int)
 	EnqueueRear(value int)
@@ -229,110 +232,36 @@ type IDeque interface {
 	IsEmpty() bool
 	Size() int
 }
+```
 
-Considere as EDs apresentadas na tabela a seguir e responda o desempenho de tempo de pior caso e melhor caso para cada operação listada. 
+3. Considere as EDs apresentadas na tabela a seguir e responda o desempenho de tempo de pior caso e melhor caso para cada operação listada. 
 
-
-ArrayDeque
-DoublyLinkedListDeque
-Operação
-Pior Caso
-Melhor Caso
-Pior Caso
-Melhor Caso
-EnqueueFront(value int)
-
-
-O(n)
-duplicar array
-
-
-O(1)
-
-
-EnqueueRear(value int)
-
-
-O(n)
-duplicar array
-
-
-O(1)
-
-
-DequeueFront() (int, error)
-O(n)
-duplicar array
-
-
-O(1)
-
-
-DequeueRear() (int, error)
-O(n)
-duplicar array
-
-
-O(1)
-
-
-Front() (int, error)
-O(1)
-
-
-O(1)
-
-
-Rear() (int, error)
-O(1)
+<img src="./img/EX5.png">
 
 
 
+### Algoritmos de Busca
+1. Explique a diferença e aplicabilidade entre uma busca linear e uma busca binária.
 
-O(1)
-
-
-IsEmpty() 
-
-
-
-
-
-
-
-
-
-
-
-Size()
-
-
-
-
-
-
-
-
-
-
-
-
-Algoritmos de Busca
-Explique a diferença e aplicabilidade entre uma busca linear e uma busca binária.
-Qual a complexidade de tempo da busca linear e da busca binária? Apresente um gráfico com as duas funções, sendo o eixo horizontal referente ao espaço de busca (tamanho do vetor), e o eixo vertical referente à complexidade de tempo.
+2. Qual a complexidade de tempo da busca linear e da busca binária? Apresente um gráfico com as duas funções, sendo o eixo horizontal referente ao espaço de busca (tamanho do vetor), e o eixo vertical referente à complexidade de tempo.
 Implemente um algoritmo de busca binária que opere em vetores ordenados de modo crescente.
+```Go
 // versao recursiva
 func bin_search(val int, list []int, start int, end int) int
 // ou versao iterativa
 func bin_search(val int, list []int) int
+```
 
-Implemente um algoritmo de busca binária que opere em vetores ordenados de modo decrescente.
+3. Implemente um algoritmo de busca binária que opere em vetores ordenados de modo decrescente.
+```GO
 // versao recursiva
 func rev_bin_search(val int, list []int, start int, end int) int
 // ou versao iterativa
 func rev_bin_search(val int, list []int) int
+```
 
-Suponha que você queira criar uma nova implementação do TAD List que sempre se mantém ordenada: OrderedList. Uma forma de fazer isso seria anulando a função que permite adicionar em uma posição arbitrária, AddOnIndex, e ajustar a implementação de Add(value int) para que ela sempre adicionasse value na posição correta da lista. Proveja a implementação das funções de OrderedList, apresentadas na tabela a seguir. 
+4. Suponha que você queira criar uma nova implementação do TAD List que sempre se mantém ordenada: OrderedList. Uma forma de fazer isso seria anulando a função que permite adicionar em uma posição arbitrária, AddOnIndex, e ajustar a implementação de Add(value int) para que ela sempre adicionasse value na posição correta da lista. Proveja a implementação das funções de OrderedList, apresentadas na tabela a seguir. 
+```GO
 type IList interface {
 	Add(value int)
 	AddOnIndex(value int, index int) error
@@ -351,13 +280,18 @@ func (list *OrderedList) RemoveOnIndex(index int) error {}
 func (list *OrderedList) Get(index int) (int, error) {}
 func (list *OrderedList) Set(value, index int) error {}
 func (list *OrderedList) Size() int {}
+```
 
-Qual estratégia você usou para encontrar a posição correta a ser adicionada o novo valor? Justifique sua escolha.
-Faz sentido executar algoritmos de busca sobre quaisquer implementação de listas? Justifique sua resposta.
-A linguagem Python não permite alguns tipos de otimização como, por exemplo, a recursão em cauda e, devido à sua natureza dinâmica, é impossível realizar esse tipo de otimização em tempo de compilação tal como em linguagens funcionais como Haskell ou ML. 
-Disponível em: http://www.python-history.blogspot.com/2009/04/origins-of-pythons-functional-features.html
-Acesso: em 15 jun. 2019 (adaptado).
+5. Qual estratégia você usou para encontrar a posição correta a ser adicionada o novo valor? Justifique sua escolha.
+
+6. Faz sentido executar algoritmos de busca sobre quaisquer implementação de listas? Justifique sua resposta.
+
+7. A linguagem Python não permite alguns tipos de otimização como, por exemplo, a recursão em cauda e, devido à sua natureza dinâmica, é impossível realizar esse tipo de otimização em tempo de compilação tal como em linguagens funcionais como Haskell ou ML. 
+
+```Disponível em: http://www.python-history.blogspot.com/2009/04/origins-of-pythons-functional-features.html```
+```Acesso: em 15 jun. 2019 (adaptado).```
 O trecho de código a seguir, escrito em Python, realiza a busca binária de um elemento x em uma lista lst e a função binary_search tem código recursivo em cauda.
+```GO
 1 def binary_search(x, lst, low=None, high=None): 
 2     if low == None : low = 0 
 3     if high == None : high = len(lst)-1 
@@ -372,19 +306,20 @@ O trecho de código a seguir, escrito em Python, realiza a busca binária de um 
 12        return binary_search(x, lst, mid+1, high)
 
 Acesso em: 15 jun. 2019 (adaptado).
+``` 
 
+8. Considerando esse trecho de código, avalie as afirmações a seguir.
 
-Considerando esse trecho de código, avalie as afirmações a seguir.
-Substituindo-se o conteúdo da linha 10 por high = mid - 1 e substituindo-se o conteúdo da linha 12 por low = mid + 1, não se altera o resultado de uma busca.
-Envolvendo-se o código das linhas 4 a 12 em um laço while True, substituindo-se o conteúdo da linha 10 por high = mid - 1 e substituindo-se o conteúdo da linha 12 por low = mid + 1 remove-se a recursão de cauda e o resultado da busca não é alterado.
-Substituindo-se o código da linha 10 por: 
-newhigh = mid-1 
-return binary_search(x, lst, low, newhigh) 
-e substituindo-se o código da linha 12 por: 
-newlow = mid+1 
+* I. Substituindo-se o conteúdo da linha 10 por high = mid - 1 e substituindo-se o conteúdo da linha 12 por low = mid + 1, não se altera o resultado de uma busca.
+* II. Envolvendo-se o código das linhas 4 a 12 em um laço while True, substituindo-se o conteúdo da linha 10 por high = mid - 1 e substituindo-se o conteúdo da linha 12 por low = mid + 1 remove-se a recursão de cauda e o resultado da busca não é alterado.
+* III. Substituindo-se o código da linha 10 por: newhigh = mid-1 
+return binary_search(x, lst, low, newhigh) e substituindo-se o código da linha 12 por: 
+```GO newlow = mid+1 
 return binary_search(x, lst, newlow, high)
 remove-se a recursão de cauda.
-Substituindo-se o conteúdo das linhas 9 a 12 por:
+```
+9. Substituindo-se o conteúdo das linhas 9 a 12 por:
+```GO
 if lst[mid] > x : 
 newlow = low 
 newhigh = mid-1 
@@ -393,15 +328,17 @@ newlow = mid+1
 newhigh = high 
 return binary_search(x, lst, newlow, newhigh) 
 mantém-se o resultado da busca. 
-
+```
 
 É correto o que se afirma em:
-I, apenas. 
-II e III, apenas. 
-II e IV, apenas. 
-I, III e IV, apenas. 
-I, II, III e IV.
+* A) I, apenas. 
+* B) II e III, apenas. 
+* C) II e IV, apenas. 
+* D) I, III e IV, apenas. 
+* E) I, II, III e IV.
+
 Observe o código abaixo escrito na linguagem C.
+```C
 #include <stdio.h>
 #define TAM 10
 int funcaol(int vetor[], int v){
@@ -428,16 +365,17 @@ int main(){
  	printf(“%d - %d”, funcao1(vetor, 15), funcao2(vetor, 15, 0, TAM-1));
 	 return 0;
 }
+```
 
 A respeito das funções implementadas, avalie as afirmações a seguir.
-O resultado da impressão na linha 24 é: 7 - 7.
-A função funcao1, no pior caso, é uma estratégia mais rápida do que a funcao2.
-A função funcao2 implementa uma estratégia iterativa na concepção do algoritmo.
+* I) O resultado da impressão na linha 24 é: 7 - 7.
+* II) A função funcao1, no pior caso, é uma estratégia mais rápida do que a funcao2.
+* C) A função funcao2 implementa uma estratégia iterativa na concepção do algoritmo.
 É correto o que se afirma em:
-I, apenas.
-III, apenas.
-I e II, apenas.
-II e III, apenas.
-I, II e III.
+* I) I, apenas.
+* II) III, apenas.
+* III) I e II, apenas.
+* IV) II e III, apenas.
+* ) VI I, II e III.
 
 
